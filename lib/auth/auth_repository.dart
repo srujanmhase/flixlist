@@ -38,4 +38,6 @@ class AuthRepository {
       }
     }
   }
+
+  Future<void> signOut() => FirebaseAuth.instance.signOut();
 }

@@ -5,6 +5,7 @@
 // license that can be found in the LICENSE file or at
 // https://opensource.org/licenses/MIT.
 
+import 'package:flixlist/auth/auth_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flixlist/counter/counter.dart';
@@ -35,6 +36,10 @@ class CounterView extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.end,
         crossAxisAlignment: CrossAxisAlignment.end,
         children: [
+          FloatingActionButton(
+            onPressed: () => context.read<AuthRepository>().signOut(),
+            child: const Icon(Icons.logout),
+          ),
           FloatingActionButton(
             onPressed: () => context.read<CounterCubit>().increment(),
             child: const Icon(Icons.add),

@@ -8,10 +8,11 @@
 import 'dart:async';
 import 'dart:developer';
 
+import 'package:flixlist/auth/auth_repository.dart';
 import 'package:flixlist/auth/cubit/auth_cubit.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
+import 'package:provider/provider.dart';
 import 'app/view/app.dart';
 
 class AppBlocObserver extends BlocObserver {
@@ -38,13 +39,16 @@ Future<void> bootstrap() async {
   await runZonedGuarded(
     () async {
       runApp(
-        MultiBlocProvider(
-          providers: [
-            BlocProvider<AuthCubit>(
-              create: (context) => AuthCubit()..checkUserState(),
-            ),
-          ],
-          child: App(),
+        Provider(
+          create: (context) => AuthRepository(),
+          child: MultiBlocProvider(
+            providers: [
+              BlocProvider<AuthCubit>(
+                create: (context) => AuthCubit()..checkUserState(),
+              ),
+            ],
+            child: App(),
+          ),
         ),
       );
     },
