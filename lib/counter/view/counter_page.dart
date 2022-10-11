@@ -12,7 +12,7 @@ import 'package:flixlist/l10n/l10n.dart';
 
 class CounterPage extends StatelessWidget {
   const CounterPage({super.key});
-
+  static const route = '/home';
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
