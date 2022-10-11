@@ -8,8 +8,11 @@
 import 'dart:async';
 import 'dart:developer';
 
-import 'package:bloc/bloc.dart';
+import 'package:flixlist/auth/cubit/auth_cubit.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+import 'app/view/app.dart';
 
 class AppBlocObserver extends BlocObserver {
   @override
@@ -25,7 +28,7 @@ class AppBlocObserver extends BlocObserver {
   }
 }
 
-Future<void> bootstrap(FutureOr<Widget> Function() builder) async {
+Future<void> bootstrap() async {
   FlutterError.onError = (details) {
     log(details.exceptionAsString(), stackTrace: details.stack);
   };
@@ -33,7 +36,18 @@ Future<void> bootstrap(FutureOr<Widget> Function() builder) async {
   Bloc.observer = AppBlocObserver();
 
   await runZonedGuarded(
-    () async => runApp(await builder()),
+    () async {
+      runApp(
+        MultiBlocProvider(
+          providers: [
+            BlocProvider<AuthCubit>(
+              create: (context) => AuthCubit()..checkUserState(),
+            ),
+          ],
+          child: App(),
+        ),
+      );
+    },
     (error, stackTrace) => log(error.toString(), stackTrace: stackTrace),
   );
 }

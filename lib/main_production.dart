@@ -5,9 +5,13 @@
 // license that can be found in the LICENSE file or at
 // https://opensource.org/licenses/MIT.
 
-import 'package:flixlist/app/app.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flixlist/bootstrap.dart';
+import 'package:flixlist/firebase_options.dart';
+import 'package:flutter/material.dart';
 
-void main() {
-  bootstrap(() => const App());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  bootstrap();
 }
