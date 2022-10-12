@@ -1,3 +1,4 @@
+import 'package:flixlist/home/view/home/home_view.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -28,8 +29,9 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
       child: Scaffold(
         body: TabBarView(
           controller: _tabController,
+          physics: NeverScrollableScrollPhysics(),
           children: [
-            Text('home'),
+            HomeView(),
             Text('world'),
           ],
         ),
