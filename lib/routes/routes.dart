@@ -1,4 +1,4 @@
-import 'package:flixlist/counter/counter.dart';
+import 'package:flixlist/home/view/home.dart';
 import 'package:flixlist/login/login.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -13,9 +13,9 @@ GoRouter getRoute(BuildContext context) {
         builder: (context, state) => LoginScreen(),
       ),
       GoRoute(
-        name: CounterPage.route,
-        path: CounterPage.route,
-        builder: (context, state) => CounterPage(),
+        name: HomePage.route,
+        path: HomePage.route,
+        builder: (context, state) => HomePage(),
       ),
     ],
   );
