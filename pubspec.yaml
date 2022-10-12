@@ -16,9 +16,12 @@ dependencies:
     sdk: flutter
   firebase_core:
   firebase_auth:
+  cloud_firestore:
   freezed_annotation: ^2.1.0
   go_router:
   intl: ^0.17.0
+  dio:
+  google_fonts:
 
 dev_dependencies:
   bloc_test: ^9.1.0

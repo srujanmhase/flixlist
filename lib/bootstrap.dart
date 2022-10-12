@@ -8,6 +8,7 @@
 import 'dart:async';
 import 'dart:developer';
 
+import 'package:dio/dio.dart';
 import 'package:flixlist/auth/auth_repository.dart';
 import 'package:flixlist/auth/cubit/auth_cubit.dart';
 import 'package:flutter/widgets.dart';
@@ -39,8 +40,19 @@ Future<void> bootstrap() async {
   await runZonedGuarded(
     () async {
       runApp(
-        Provider(
-          create: (context) => AuthRepository(),
+        MultiProvider(
+          providers: [
+            Provider(
+              create: (context) => AuthRepository(),
+            ),
+            Provider(
+              create: (context) => Dio(
+                BaseOptions(
+                  baseUrl: 'http://www.omdbapi.com/?apikey=67cd0e5a&',
+                ),
+              ),
+            )
+          ],
           child: MultiBlocProvider(
             providers: [
               BlocProvider<AuthCubit>(
