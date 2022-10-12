@@ -6,7 +6,7 @@
 // https://opensource.org/licenses/MIT.
 
 import 'package:flixlist/auth/cubit/auth_cubit.dart';
-import 'package:flixlist/counter/counter.dart';
+import 'package:flixlist/home/view/home.dart';
 import 'package:flixlist/login/login.dart';
 import 'package:flixlist/routes/routes.dart';
 import 'package:flutter/material.dart';
@@ -36,7 +36,7 @@ class _AppState extends State<App> {
       home: BlocListener<AuthCubit, AuthState>(
         listener: (context, state) {
           if (state.isLoggedin && mounted) {
-            approutes.goNamed(CounterPage.route);
+            approutes.goNamed(HomePage.route);
           }
           if (!state.isLoggedin && mounted) {
             approutes.goNamed(LoginScreen.route);
