@@ -35,6 +35,8 @@ abstract class $HomeStateCopyWith<$Res> {
       List<MovieList> yourLists,
       MovieList? featuredList,
       String? error});
+
+  $MovieListCopyWith<$Res>? get featuredList;
 }
 
 /// @nodoc
@@ -71,6 +73,17 @@ class _$HomeStateCopyWithImpl<$Res> implements $HomeStateCopyWith<$Res> {
               as String?,
     ));
   }
+
+  @override
+  $MovieListCopyWith<$Res>? get featuredList {
+    if (_value.featuredList == null) {
+      return null;
+    }
+
+    return $MovieListCopyWith<$Res>(_value.featuredList!, (value) {
+      return _then(_value.copyWith(featuredList: value));
+    });
+  }
 }
 
 /// @nodoc
@@ -84,6 +97,9 @@ abstract class _$$_HomeStateCopyWith<$Res> implements $HomeStateCopyWith<$Res> {
       List<MovieList> yourLists,
       MovieList? featuredList,
       String? error});
+
+  @override
+  $MovieListCopyWith<$Res>? get featuredList;
 }
 
 /// @nodoc
