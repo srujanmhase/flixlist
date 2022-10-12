@@ -17,6 +17,8 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$HomeState {
   bool get isLoading => throw _privateConstructorUsedError;
+  List<MovieList> get yourLists => throw _privateConstructorUsedError;
+  MovieList? get featuredList => throw _privateConstructorUsedError;
   String? get error => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -28,7 +30,11 @@ mixin _$HomeState {
 abstract class $HomeStateCopyWith<$Res> {
   factory $HomeStateCopyWith(HomeState value, $Res Function(HomeState) then) =
       _$HomeStateCopyWithImpl<$Res>;
-  $Res call({bool isLoading, String? error});
+  $Res call(
+      {bool isLoading,
+      List<MovieList> yourLists,
+      MovieList? featuredList,
+      String? error});
 }
 
 /// @nodoc
@@ -42,6 +48,8 @@ class _$HomeStateCopyWithImpl<$Res> implements $HomeStateCopyWith<$Res> {
   @override
   $Res call({
     Object? isLoading = freezed,
+    Object? yourLists = freezed,
+    Object? featuredList = freezed,
     Object? error = freezed,
   }) {
     return _then(_value.copyWith(
@@ -49,6 +57,14 @@ class _$HomeStateCopyWithImpl<$Res> implements $HomeStateCopyWith<$Res> {
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
               as bool,
+      yourLists: yourLists == freezed
+          ? _value.yourLists
+          : yourLists // ignore: cast_nullable_to_non_nullable
+              as List<MovieList>,
+      featuredList: featuredList == freezed
+          ? _value.featuredList
+          : featuredList // ignore: cast_nullable_to_non_nullable
+              as MovieList?,
       error: error == freezed
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
@@ -63,7 +79,11 @@ abstract class _$$_HomeStateCopyWith<$Res> implements $HomeStateCopyWith<$Res> {
           _$_HomeState value, $Res Function(_$_HomeState) then) =
       __$$_HomeStateCopyWithImpl<$Res>;
   @override
-  $Res call({bool isLoading, String? error});
+  $Res call(
+      {bool isLoading,
+      List<MovieList> yourLists,
+      MovieList? featuredList,
+      String? error});
 }
 
 /// @nodoc
@@ -79,6 +99,8 @@ class __$$_HomeStateCopyWithImpl<$Res> extends _$HomeStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? isLoading = freezed,
+    Object? yourLists = freezed,
+    Object? featuredList = freezed,
     Object? error = freezed,
   }) {
     return _then(_$_HomeState(
@@ -86,6 +108,14 @@ class __$$_HomeStateCopyWithImpl<$Res> extends _$HomeStateCopyWithImpl<$Res>
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
               as bool,
+      yourLists: yourLists == freezed
+          ? _value._yourLists
+          : yourLists // ignore: cast_nullable_to_non_nullable
+              as List<MovieList>,
+      featuredList: featuredList == freezed
+          ? _value.featuredList
+          : featuredList // ignore: cast_nullable_to_non_nullable
+              as MovieList?,
       error: error == freezed
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
@@ -97,17 +127,32 @@ class __$$_HomeStateCopyWithImpl<$Res> extends _$HomeStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_HomeState implements _HomeState {
-  const _$_HomeState({this.isLoading = false, this.error});
+  const _$_HomeState(
+      {this.isLoading = false,
+      final List<MovieList> yourLists = const <MovieList>[],
+      this.featuredList,
+      this.error})
+      : _yourLists = yourLists;
 
   @override
   @JsonKey()
   final bool isLoading;
+  final List<MovieList> _yourLists;
+  @override
+  @JsonKey()
+  List<MovieList> get yourLists {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_yourLists);
+  }
+
+  @override
+  final MovieList? featuredList;
   @override
   final String? error;
 
   @override
   String toString() {
-    return 'HomeState(isLoading: $isLoading, error: $error)';
+    return 'HomeState(isLoading: $isLoading, yourLists: $yourLists, featuredList: $featuredList, error: $error)';
   }
 
   @override
@@ -116,6 +161,10 @@ class _$_HomeState implements _HomeState {
         (other.runtimeType == runtimeType &&
             other is _$_HomeState &&
             const DeepCollectionEquality().equals(other.isLoading, isLoading) &&
+            const DeepCollectionEquality()
+                .equals(other._yourLists, _yourLists) &&
+            const DeepCollectionEquality()
+                .equals(other.featuredList, featuredList) &&
             const DeepCollectionEquality().equals(other.error, error));
   }
 
@@ -123,6 +172,8 @@ class _$_HomeState implements _HomeState {
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(isLoading),
+      const DeepCollectionEquality().hash(_yourLists),
+      const DeepCollectionEquality().hash(featuredList),
       const DeepCollectionEquality().hash(error));
 
   @JsonKey(ignore: true)
@@ -132,11 +183,18 @@ class _$_HomeState implements _HomeState {
 }
 
 abstract class _HomeState implements HomeState {
-  const factory _HomeState({final bool isLoading, final String? error}) =
-      _$_HomeState;
+  const factory _HomeState(
+      {final bool isLoading,
+      final List<MovieList> yourLists,
+      final MovieList? featuredList,
+      final String? error}) = _$_HomeState;
 
   @override
   bool get isLoading;
+  @override
+  List<MovieList> get yourLists;
+  @override
+  MovieList? get featuredList;
   @override
   String? get error;
   @override
