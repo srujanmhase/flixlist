@@ -1,3 +1,4 @@
+import 'package:flixlist/explore/view/explore_page.dart';
 import 'package:flixlist/home/view/home/home_view.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -32,7 +33,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
           physics: NeverScrollableScrollPhysics(),
           children: [
             HomeView(),
-            Text('world'),
+            ExplorePage(),
           ],
         ),
         bottomNavigationBar: Builder(builder: (context) {
