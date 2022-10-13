@@ -112,17 +112,17 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                     Expanded(
                       child: Container(
-                        decoration: BoxDecoration(
-                          gradient: LinearGradient(
-                            colors: [Color(0xff320000), Color(0xffAD0000)],
-                            begin: Alignment.bottomLeft,
-                            end: Alignment.topRight,
-                          ),
-                          borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(50),
-                            topRight: Radius.circular(50),
-                          ),
-                        ),
+                        // decoration: BoxDecoration(
+                        //   gradient: LinearGradient(
+                        //     colors: [Color(0xff320000), Color(0xffAD0000)],
+                        //     begin: Alignment.bottomLeft,
+                        //     end: Alignment.topRight,
+                        //   ),
+                        //   borderRadius: BorderRadius.only(
+                        //     topLeft: Radius.circular(50),
+                        //     topRight: Radius.circular(50),
+                        //   ),
+                        // ),
                         child: Column(
                           children: [
                             const SizedBox(
@@ -148,7 +148,6 @@ class _LoginScreenState extends State<LoginScreen> {
                                     child: Text(
                                       'Sign up',
                                       style: GoogleFonts.leagueGothic(
-                                        color: Colors.white,
                                         fontSize: _activePage == 0 ? 28 : 20,
                                       ),
                                     ),
@@ -170,7 +169,6 @@ class _LoginScreenState extends State<LoginScreen> {
                                     child: Text(
                                       'Login',
                                       style: GoogleFonts.leagueGothic(
-                                        color: Colors.white,
                                         fontSize: _activePage == 1 ? 28 : 20,
                                       ),
                                     ),
@@ -185,10 +183,12 @@ class _LoginScreenState extends State<LoginScreen> {
                                   TextFormField(
                                     controller: _emailController,
                                     decoration: InputDecoration(
-                                      fillColor: Colors.white,
+                                      hintText: 'E-mail',
+                                      fillColor: Colors.grey.withOpacity(0.4),
                                       filled: true,
                                       border: OutlineInputBorder(
-                                        borderRadius: BorderRadius.circular(10),
+                                        borderRadius:
+                                            BorderRadius.circular(100),
                                         borderSide: BorderSide.none,
                                       ),
                                     ),
@@ -200,10 +200,12 @@ class _LoginScreenState extends State<LoginScreen> {
                                     controller: _passwordController,
                                     obscureText: true,
                                     decoration: InputDecoration(
-                                      fillColor: Colors.white,
+                                      hintText: 'Password',
+                                      fillColor: Colors.grey.withOpacity(0.4),
                                       filled: true,
                                       border: OutlineInputBorder(
-                                        borderRadius: BorderRadius.circular(10),
+                                        borderRadius:
+                                            BorderRadius.circular(100),
                                         borderSide: BorderSide.none,
                                       ),
                                     ),
@@ -214,7 +216,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             if (!state.isProcessing)
                               SizedBox(
                                 height: 50,
-                                width: 200,
+                                width: MediaQuery.of(context).size.width - 32,
                                 child: PageView(
                                   controller: _pageController,
                                   physics: NeverScrollableScrollPhysics(),
@@ -229,6 +231,9 @@ class _LoginScreenState extends State<LoginScreen> {
                                       },
                                       style: ElevatedButton.styleFrom(
                                         primary: Colors.white,
+                                        shape: StadiumBorder(),
+                                        side: BorderSide(),
+                                        elevation: 0,
                                       ),
                                       child: Text(
                                         'Sign Up',
@@ -245,6 +250,9 @@ class _LoginScreenState extends State<LoginScreen> {
                                       },
                                       style: ElevatedButton.styleFrom(
                                         primary: Colors.white,
+                                        shape: StadiumBorder(),
+                                        side: BorderSide(),
+                                        elevation: 0,
                                       ),
                                       child: Text(
                                         'Login',
@@ -255,9 +263,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                 ),
                               ),
                             if (state.isProcessing)
-                              CupertinoActivityIndicator(
-                                color: Colors.white,
-                              ),
+                              CupertinoActivityIndicator(),
                           ],
                         ),
                       ),

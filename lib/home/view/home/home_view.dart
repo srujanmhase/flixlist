@@ -212,9 +212,20 @@ class _HomePageViewState extends State<HomePageView> {
                   padding: const EdgeInsets.all(16),
                   child: SizedBox(
                     height: 190,
-                    width: 145,
-                    child: Container(
-                      color: Colors.amber,
+                    width: MediaQuery.of(context).size.width - 32,
+                    child: ListView.separated(
+                      itemCount: 4,
+                      scrollDirection: Axis.horizontal,
+                      separatorBuilder: (context, index) => const SizedBox(
+                        width: 10,
+                      ),
+                      itemBuilder: (context, index) => SizedBox(
+                        height: 190,
+                        width: 145,
+                        child: Container(
+                          color: Colors.amber,
+                        ),
+                      ),
                     ),
                   ),
                 )
