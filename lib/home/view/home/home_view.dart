@@ -1,5 +1,7 @@
 import 'package:flixlist/auth/auth_repository.dart';
 import 'package:flixlist/home/cubit/home_cubit.dart';
+import 'package:flixlist/movie/movie_details.dart';
+import 'package:flixlist/routes/custom_route.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -229,8 +231,15 @@ class _HomePageViewState extends State<HomePageView> {
                         itemBuilder: (context, index) => SizedBox(
                           height: 190,
                           width: 145,
-                          child: Container(
-                            color: Colors.amber,
+                          child: InkWell(
+                            onTap: () {
+                              Navigator.of(context).push(
+                                FlixRoute(widget: MoviePage(), offset: 0.3),
+                              );
+                            },
+                            child: Container(
+                              color: Colors.amber,
+                            ),
                           ),
                         ),
                       ),
