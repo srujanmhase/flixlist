@@ -22,6 +22,7 @@ dependencies:
   intl: ^0.17.0
   dio:
   google_fonts:
+  random_string: 
 
 dev_dependencies:
   bloc_test: ^9.1.0
