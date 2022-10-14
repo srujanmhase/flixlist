@@ -20,6 +20,7 @@ Movie _$MovieFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Movie {
+  String get imdbID => throw _privateConstructorUsedError;
   String get Title => throw _privateConstructorUsedError;
   String get Year => throw _privateConstructorUsedError;
   String get Plot => throw _privateConstructorUsedError;
@@ -34,7 +35,8 @@ mixin _$Movie {
 abstract class $MovieCopyWith<$Res> {
   factory $MovieCopyWith(Movie value, $Res Function(Movie) then) =
       _$MovieCopyWithImpl<$Res>;
-  $Res call({String Title, String Year, String Plot, String Poster});
+  $Res call(
+      {String imdbID, String Title, String Year, String Plot, String Poster});
 }
 
 /// @nodoc
@@ -47,12 +49,17 @@ class _$MovieCopyWithImpl<$Res> implements $MovieCopyWith<$Res> {
 
   @override
   $Res call({
+    Object? imdbID = freezed,
     Object? Title = freezed,
     Object? Year = freezed,
     Object? Plot = freezed,
     Object? Poster = freezed,
   }) {
     return _then(_value.copyWith(
+      imdbID: imdbID == freezed
+          ? _value.imdbID
+          : imdbID // ignore: cast_nullable_to_non_nullable
+              as String,
       Title: Title == freezed
           ? _value.Title
           : Title // ignore: cast_nullable_to_non_nullable
@@ -78,7 +85,8 @@ abstract class _$$_MovieCopyWith<$Res> implements $MovieCopyWith<$Res> {
   factory _$$_MovieCopyWith(_$_Movie value, $Res Function(_$_Movie) then) =
       __$$_MovieCopyWithImpl<$Res>;
   @override
-  $Res call({String Title, String Year, String Plot, String Poster});
+  $Res call(
+      {String imdbID, String Title, String Year, String Plot, String Poster});
 }
 
 /// @nodoc
@@ -92,12 +100,17 @@ class __$$_MovieCopyWithImpl<$Res> extends _$MovieCopyWithImpl<$Res>
 
   @override
   $Res call({
+    Object? imdbID = freezed,
     Object? Title = freezed,
     Object? Year = freezed,
     Object? Plot = freezed,
     Object? Poster = freezed,
   }) {
     return _then(_$_Movie(
+      imdbID: imdbID == freezed
+          ? _value.imdbID
+          : imdbID // ignore: cast_nullable_to_non_nullable
+              as String,
       Title: Title == freezed
           ? _value.Title
           : Title // ignore: cast_nullable_to_non_nullable
@@ -122,7 +135,8 @@ class __$$_MovieCopyWithImpl<$Res> extends _$MovieCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_Movie implements _Movie {
   const _$_Movie(
-      {required this.Title,
+      {required this.imdbID,
+      required this.Title,
       required this.Year,
       required this.Plot,
       required this.Poster});
@@ -130,6 +144,8 @@ class _$_Movie implements _Movie {
   factory _$_Movie.fromJson(Map<String, dynamic> json) =>
       _$$_MovieFromJson(json);
 
+  @override
+  final String imdbID;
   @override
   final String Title;
   @override
@@ -141,7 +157,7 @@ class _$_Movie implements _Movie {
 
   @override
   String toString() {
-    return 'Movie(Title: $Title, Year: $Year, Plot: $Plot, Poster: $Poster)';
+    return 'Movie(imdbID: $imdbID, Title: $Title, Year: $Year, Plot: $Plot, Poster: $Poster)';
   }
 
   @override
@@ -149,6 +165,7 @@ class _$_Movie implements _Movie {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_Movie &&
+            const DeepCollectionEquality().equals(other.imdbID, imdbID) &&
             const DeepCollectionEquality().equals(other.Title, Title) &&
             const DeepCollectionEquality().equals(other.Year, Year) &&
             const DeepCollectionEquality().equals(other.Plot, Plot) &&
@@ -159,6 +176,7 @@ class _$_Movie implements _Movie {
   @override
   int get hashCode => Object.hash(
       runtimeType,
+      const DeepCollectionEquality().hash(imdbID),
       const DeepCollectionEquality().hash(Title),
       const DeepCollectionEquality().hash(Year),
       const DeepCollectionEquality().hash(Plot),
@@ -179,13 +197,16 @@ class _$_Movie implements _Movie {
 
 abstract class _Movie implements Movie {
   const factory _Movie(
-      {required final String Title,
+      {required final String imdbID,
+      required final String Title,
       required final String Year,
       required final String Plot,
       required final String Poster}) = _$_Movie;
 
   factory _Movie.fromJson(Map<String, dynamic> json) = _$_Movie.fromJson;
 
+  @override
+  String get imdbID;
   @override
   String get Title;
   @override
