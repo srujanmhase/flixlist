@@ -59,6 +59,9 @@ class _MoviePageViewState extends State<MoviePageView> {
       },
       listenWhen: (previous, next) => previous != next,
       builder: (context, state) {
+        if (state.error != null) {
+          return const SizedBox();
+        }
         if (state.isLoading) {
           return Column(
             children: [
