@@ -1,16 +1,36 @@
-import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
-part 'firestorelist.freezed.dart';
-part 'firestorelist.g.dart';
+class FirestoreList {
+  const FirestoreList({
+    required this.uuid,
+    required this.title,
+    required this.private,
+    required this.list,
+  });
 
-@Freezed()
-class FirestoreList with _$FirestoreList {
-  const factory FirestoreList({
-    required String title,
-    required bool private,
-    required List<String> list,
-  }) = _FirestoreList;
+  final String uuid;
+  final String title;
+  final bool private;
+  final List<String> list;
 
-  factory FirestoreList.fromJson(Map<String, dynamic> json) =>
-      _$FirestoreListFromJson(json);
+  factory FirestoreList.fromFirestore(
+    DocumentSnapshot<Map<String, dynamic>> snapshot,
+    SnapshotOptions? options,
+  ) {
+    final data = snapshot.data();
+    return FirestoreList(
+      uuid: data?['uuid'],
+      title: data?['title'],
+      private: data?['private'],
+      list: data?['list'] is Iterable ? List.from(data?['list']) : [],
+    );
+  }
+  Map<String, dynamic> toFirestore() {
+    return {
+      "uuid": uuid,
+      "title": title,
+      "private": private,
+      "list": list,
+    };
+  }
 }
