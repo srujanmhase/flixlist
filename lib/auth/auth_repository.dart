@@ -39,5 +39,7 @@ class AuthRepository {
     }
   }
 
+  User? getUser() => FirebaseAuth.instance.currentUser;
+
   Future<void> signOut() => FirebaseAuth.instance.signOut();
 }
