@@ -12,7 +12,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dio/dio.dart';
 import 'package:flixlist/auth/auth_repository.dart';
 import 'package:flixlist/auth/cubit/auth_cubit.dart';
-import 'package:flixlist/firestore/firestore_repository.dart';
+import 'package:flixlist/services/firestore_repository.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
