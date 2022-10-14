@@ -119,7 +119,18 @@ class _HomePageViewState extends State<HomePageView> {
                                       borderSide: BorderSide.none,
                                     ),
                                     suffixIcon: InkWell(
-                                      onTap: () => print('tapped'),
+                                      onTap: () {
+                                        if (_searchController.text.isNotEmpty)
+                                          Navigator.of(context).push(
+                                            FlixRoute(
+                                              widget: MoviePage(
+                                                name: _searchController.text,
+                                                id: '',
+                                              ),
+                                              offset: 0.3,
+                                            ),
+                                          );
+                                      },
                                       child: Icon(
                                         Icons.search,
                                         color: Color(0xff320000),
@@ -234,7 +245,13 @@ class _HomePageViewState extends State<HomePageView> {
                           child: InkWell(
                             onTap: () {
                               Navigator.of(context).push(
-                                FlixRoute(widget: MoviePage(), offset: 0.3),
+                                FlixRoute(
+                                  widget: MoviePage(
+                                    name: '',
+                                    id: '',
+                                  ),
+                                  offset: 0.3,
+                                ),
                               );
                             },
                             child: Container(
