@@ -7,6 +7,7 @@ part of 'list.dart';
 // **************************************************************************
 
 _$_MovieList _$$_MovieListFromJson(Map<String, dynamic> json) => _$_MovieList(
+      uuid: json['uuid'] as String,
       title: json['title'] as String,
       private: json['private'] as bool,
       movies: (json['movies'] as List<dynamic>)
@@ -16,6 +17,7 @@ _$_MovieList _$$_MovieListFromJson(Map<String, dynamic> json) => _$_MovieList(
 
 Map<String, dynamic> _$$_MovieListToJson(_$_MovieList instance) =>
     <String, dynamic>{
+      'uuid': instance.uuid,
       'title': instance.title,
       'private': instance.private,
       'movies': instance.movies,

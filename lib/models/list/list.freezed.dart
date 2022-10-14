@@ -20,6 +20,7 @@ MovieList _$MovieListFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$MovieList {
+  String get uuid => throw _privateConstructorUsedError;
   String get title => throw _privateConstructorUsedError;
   bool get private => throw _privateConstructorUsedError;
   List<Movie> get movies => throw _privateConstructorUsedError;
@@ -34,7 +35,7 @@ mixin _$MovieList {
 abstract class $MovieListCopyWith<$Res> {
   factory $MovieListCopyWith(MovieList value, $Res Function(MovieList) then) =
       _$MovieListCopyWithImpl<$Res>;
-  $Res call({String title, bool private, List<Movie> movies});
+  $Res call({String uuid, String title, bool private, List<Movie> movies});
 }
 
 /// @nodoc
@@ -47,11 +48,16 @@ class _$MovieListCopyWithImpl<$Res> implements $MovieListCopyWith<$Res> {
 
   @override
   $Res call({
+    Object? uuid = freezed,
     Object? title = freezed,
     Object? private = freezed,
     Object? movies = freezed,
   }) {
     return _then(_value.copyWith(
+      uuid: uuid == freezed
+          ? _value.uuid
+          : uuid // ignore: cast_nullable_to_non_nullable
+              as String,
       title: title == freezed
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
@@ -74,7 +80,7 @@ abstract class _$$_MovieListCopyWith<$Res> implements $MovieListCopyWith<$Res> {
           _$_MovieList value, $Res Function(_$_MovieList) then) =
       __$$_MovieListCopyWithImpl<$Res>;
   @override
-  $Res call({String title, bool private, List<Movie> movies});
+  $Res call({String uuid, String title, bool private, List<Movie> movies});
 }
 
 /// @nodoc
@@ -89,11 +95,16 @@ class __$$_MovieListCopyWithImpl<$Res> extends _$MovieListCopyWithImpl<$Res>
 
   @override
   $Res call({
+    Object? uuid = freezed,
     Object? title = freezed,
     Object? private = freezed,
     Object? movies = freezed,
   }) {
     return _then(_$_MovieList(
+      uuid: uuid == freezed
+          ? _value.uuid
+          : uuid // ignore: cast_nullable_to_non_nullable
+              as String,
       title: title == freezed
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
@@ -114,7 +125,8 @@ class __$$_MovieListCopyWithImpl<$Res> extends _$MovieListCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_MovieList implements _MovieList {
   const _$_MovieList(
-      {required this.title,
+      {required this.uuid,
+      required this.title,
       required this.private,
       required final List<Movie> movies})
       : _movies = movies;
@@ -122,6 +134,8 @@ class _$_MovieList implements _MovieList {
   factory _$_MovieList.fromJson(Map<String, dynamic> json) =>
       _$$_MovieListFromJson(json);
 
+  @override
+  final String uuid;
   @override
   final String title;
   @override
@@ -135,7 +149,7 @@ class _$_MovieList implements _MovieList {
 
   @override
   String toString() {
-    return 'MovieList(title: $title, private: $private, movies: $movies)';
+    return 'MovieList(uuid: $uuid, title: $title, private: $private, movies: $movies)';
   }
 
   @override
@@ -143,6 +157,7 @@ class _$_MovieList implements _MovieList {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_MovieList &&
+            const DeepCollectionEquality().equals(other.uuid, uuid) &&
             const DeepCollectionEquality().equals(other.title, title) &&
             const DeepCollectionEquality().equals(other.private, private) &&
             const DeepCollectionEquality().equals(other._movies, _movies));
@@ -152,6 +167,7 @@ class _$_MovieList implements _MovieList {
   @override
   int get hashCode => Object.hash(
       runtimeType,
+      const DeepCollectionEquality().hash(uuid),
       const DeepCollectionEquality().hash(title),
       const DeepCollectionEquality().hash(private),
       const DeepCollectionEquality().hash(_movies));
@@ -171,13 +187,16 @@ class _$_MovieList implements _MovieList {
 
 abstract class _MovieList implements MovieList {
   const factory _MovieList(
-      {required final String title,
+      {required final String uuid,
+      required final String title,
       required final bool private,
       required final List<Movie> movies}) = _$_MovieList;
 
   factory _MovieList.fromJson(Map<String, dynamic> json) =
       _$_MovieList.fromJson;
 
+  @override
+  String get uuid;
   @override
   String get title;
   @override

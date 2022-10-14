@@ -7,6 +7,7 @@ part 'list.g.dart';
 @Freezed()
 class MovieList with _$MovieList {
   const factory MovieList({
+    required String uuid,
     required String title,
     required bool private,
     required List<Movie> movies,
