@@ -1,5 +1,6 @@
 import 'package:flixlist/auth/auth_repository.dart';
 import 'package:flixlist/login/cubit/login_cubit.dart';
+import 'package:flixlist/services/firestore_repository.dart';
 import 'package:flixlist/utils/utils.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -27,7 +28,10 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => LoginCubit(context.read<AuthRepository>()),
+      create: (context) => LoginCubit(
+        context.read<AuthRepository>(),
+        context.read<FirestoreRepository>(),
+      ),
       child: Builder(builder: (context) {
         return BlocConsumer<LoginCubit, LoginState>(
           listener: (context, state) {
