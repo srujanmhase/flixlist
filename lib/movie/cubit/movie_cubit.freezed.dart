@@ -17,6 +17,7 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$MovieState {
   bool get isLoading => throw _privateConstructorUsedError;
+  String? get error => throw _privateConstructorUsedError;
   Movie? get movie => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -29,7 +30,7 @@ abstract class $MovieStateCopyWith<$Res> {
   factory $MovieStateCopyWith(
           MovieState value, $Res Function(MovieState) then) =
       _$MovieStateCopyWithImpl<$Res>;
-  $Res call({bool isLoading, Movie? movie});
+  $Res call({bool isLoading, String? error, Movie? movie});
 
   $MovieCopyWith<$Res>? get movie;
 }
@@ -45,6 +46,7 @@ class _$MovieStateCopyWithImpl<$Res> implements $MovieStateCopyWith<$Res> {
   @override
   $Res call({
     Object? isLoading = freezed,
+    Object? error = freezed,
     Object? movie = freezed,
   }) {
     return _then(_value.copyWith(
@@ -52,6 +54,10 @@ class _$MovieStateCopyWithImpl<$Res> implements $MovieStateCopyWith<$Res> {
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
               as bool,
+      error: error == freezed
+          ? _value.error
+          : error // ignore: cast_nullable_to_non_nullable
+              as String?,
       movie: movie == freezed
           ? _value.movie
           : movie // ignore: cast_nullable_to_non_nullable
@@ -78,7 +84,7 @@ abstract class _$$_MovieStateCopyWith<$Res>
           _$_MovieState value, $Res Function(_$_MovieState) then) =
       __$$_MovieStateCopyWithImpl<$Res>;
   @override
-  $Res call({bool isLoading, Movie? movie});
+  $Res call({bool isLoading, String? error, Movie? movie});
 
   @override
   $MovieCopyWith<$Res>? get movie;
@@ -97,6 +103,7 @@ class __$$_MovieStateCopyWithImpl<$Res> extends _$MovieStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? isLoading = freezed,
+    Object? error = freezed,
     Object? movie = freezed,
   }) {
     return _then(_$_MovieState(
@@ -104,6 +111,10 @@ class __$$_MovieStateCopyWithImpl<$Res> extends _$MovieStateCopyWithImpl<$Res>
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
               as bool,
+      error: error == freezed
+          ? _value.error
+          : error // ignore: cast_nullable_to_non_nullable
+              as String?,
       movie: movie == freezed
           ? _value.movie
           : movie // ignore: cast_nullable_to_non_nullable
@@ -115,17 +126,19 @@ class __$$_MovieStateCopyWithImpl<$Res> extends _$MovieStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_MovieState implements _MovieState {
-  const _$_MovieState({this.isLoading = false, this.movie});
+  const _$_MovieState({this.isLoading = false, this.error, this.movie});
 
   @override
   @JsonKey()
   final bool isLoading;
   @override
+  final String? error;
+  @override
   final Movie? movie;
 
   @override
   String toString() {
-    return 'MovieState(isLoading: $isLoading, movie: $movie)';
+    return 'MovieState(isLoading: $isLoading, error: $error, movie: $movie)';
   }
 
   @override
@@ -134,6 +147,7 @@ class _$_MovieState implements _MovieState {
         (other.runtimeType == runtimeType &&
             other is _$_MovieState &&
             const DeepCollectionEquality().equals(other.isLoading, isLoading) &&
+            const DeepCollectionEquality().equals(other.error, error) &&
             const DeepCollectionEquality().equals(other.movie, movie));
   }
 
@@ -141,6 +155,7 @@ class _$_MovieState implements _MovieState {
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(isLoading),
+      const DeepCollectionEquality().hash(error),
       const DeepCollectionEquality().hash(movie));
 
   @JsonKey(ignore: true)
@@ -150,11 +165,15 @@ class _$_MovieState implements _MovieState {
 }
 
 abstract class _MovieState implements MovieState {
-  const factory _MovieState({final bool isLoading, final Movie? movie}) =
-      _$_MovieState;
+  const factory _MovieState(
+      {final bool isLoading,
+      final String? error,
+      final Movie? movie}) = _$_MovieState;
 
   @override
   bool get isLoading;
+  @override
+  String? get error;
   @override
   Movie? get movie;
   @override
