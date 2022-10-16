@@ -16,7 +16,7 @@ class FirestoreRepository {
     );
   }
 
-  Future<void> createNewPrivateList(String uuid, String name) async {
+  Future<String> createNewPrivateList(String uuid, String name) async {
     final listID = randomAlphaNumeric(10);
     await _instance.collection('users').doc(uuid).update({
       'public': FieldValue.arrayUnion([listID]),
@@ -28,9 +28,10 @@ class FirestoreRepository {
       "private": true,
       "list": [],
     });
+    return listID;
   }
 
-  Future<void> createNewPublicList(String uuid, String name) async {
+  Future<String> createNewPublicList(String uuid, String name) async {
     final listID = randomAlphaNumeric(10);
     await _instance.collection('users').doc(uuid).update({
       'public': FieldValue.arrayUnion([listID]),
@@ -42,6 +43,7 @@ class FirestoreRepository {
       "private": false,
       "list": [],
     });
+    return listID;
   }
 
   Future<void> addMovieToPrivateList(
