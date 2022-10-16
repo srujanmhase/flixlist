@@ -10,8 +10,8 @@ _$_MovieList _$$_MovieListFromJson(Map<String, dynamic> json) => _$_MovieList(
       uuid: json['uuid'] as String,
       title: json['title'] as String,
       private: json['private'] as bool,
-      movies: (json['movies'] as List<dynamic>)
-          .map((e) => Movie.fromJson(e as Map<String, dynamic>))
+      movies: (json['movies'] as List<dynamic>?)
+          ?.map((e) => Movie.fromJson(e as Map<String, dynamic>))
           .toList(),
     );
 

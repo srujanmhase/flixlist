@@ -10,7 +10,7 @@ class MovieList with _$MovieList {
     required String uuid,
     required String title,
     required bool private,
-    required List<Movie> movies,
+    List<Movie>? movies,
   }) = _MovieList;
 
   factory MovieList.fromJson(Map<String, dynamic> json) =>

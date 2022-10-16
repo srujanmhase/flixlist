@@ -23,7 +23,7 @@ mixin _$MovieList {
   String get uuid => throw _privateConstructorUsedError;
   String get title => throw _privateConstructorUsedError;
   bool get private => throw _privateConstructorUsedError;
-  List<Movie> get movies => throw _privateConstructorUsedError;
+  List<Movie>? get movies => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -35,7 +35,7 @@ mixin _$MovieList {
 abstract class $MovieListCopyWith<$Res> {
   factory $MovieListCopyWith(MovieList value, $Res Function(MovieList) then) =
       _$MovieListCopyWithImpl<$Res>;
-  $Res call({String uuid, String title, bool private, List<Movie> movies});
+  $Res call({String uuid, String title, bool private, List<Movie>? movies});
 }
 
 /// @nodoc
@@ -69,7 +69,7 @@ class _$MovieListCopyWithImpl<$Res> implements $MovieListCopyWith<$Res> {
       movies: movies == freezed
           ? _value.movies
           : movies // ignore: cast_nullable_to_non_nullable
-              as List<Movie>,
+              as List<Movie>?,
     ));
   }
 }
@@ -80,7 +80,7 @@ abstract class _$$_MovieListCopyWith<$Res> implements $MovieListCopyWith<$Res> {
           _$_MovieList value, $Res Function(_$_MovieList) then) =
       __$$_MovieListCopyWithImpl<$Res>;
   @override
-  $Res call({String uuid, String title, bool private, List<Movie> movies});
+  $Res call({String uuid, String title, bool private, List<Movie>? movies});
 }
 
 /// @nodoc
@@ -116,7 +116,7 @@ class __$$_MovieListCopyWithImpl<$Res> extends _$MovieListCopyWithImpl<$Res>
       movies: movies == freezed
           ? _value._movies
           : movies // ignore: cast_nullable_to_non_nullable
-              as List<Movie>,
+              as List<Movie>?,
     ));
   }
 }
@@ -128,7 +128,7 @@ class _$_MovieList implements _MovieList {
       {required this.uuid,
       required this.title,
       required this.private,
-      required final List<Movie> movies})
+      final List<Movie>? movies})
       : _movies = movies;
 
   factory _$_MovieList.fromJson(Map<String, dynamic> json) =>
@@ -140,11 +140,13 @@ class _$_MovieList implements _MovieList {
   final String title;
   @override
   final bool private;
-  final List<Movie> _movies;
+  final List<Movie>? _movies;
   @override
-  List<Movie> get movies {
+  List<Movie>? get movies {
+    final value = _movies;
+    if (value == null) return null;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_movies);
+    return EqualUnmodifiableListView(value);
   }
 
   @override
@@ -190,7 +192,7 @@ abstract class _MovieList implements MovieList {
       {required final String uuid,
       required final String title,
       required final bool private,
-      required final List<Movie> movies}) = _$_MovieList;
+      final List<Movie>? movies}) = _$_MovieList;
 
   factory _MovieList.fromJson(Map<String, dynamic> json) =
       _$_MovieList.fromJson;
@@ -202,7 +204,7 @@ abstract class _MovieList implements MovieList {
   @override
   bool get private;
   @override
-  List<Movie> get movies;
+  List<Movie>? get movies;
   @override
   @JsonKey(ignore: true)
   _$$_MovieListCopyWith<_$_MovieList> get copyWith =>
