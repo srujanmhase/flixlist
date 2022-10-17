@@ -110,7 +110,7 @@ class FirestoreRepository {
     );
   }
 
-  Future<List<FirestoreList>> fetchPublicLists(String uuid) async {
+  Future<List<FirestoreList>> fetchPublicLists() async {
     final data = await _instance
         .collection('public')
         .where('private', isEqualTo: false)
