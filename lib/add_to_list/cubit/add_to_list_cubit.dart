@@ -12,7 +12,7 @@ class AddToListCubit extends Cubit<AddToListState> {
       : super(const AddToListState());
   final AuthRepository authRepository;
   final FirestoreRepository firestoreRepository;
-  Future<void> fetchYourLists(String uuid) async {
+  Future<void> fetchYourLists() async {
     emit(state.copyWith(isLoading: true));
     try {
       final user = authRepository.getUser();
