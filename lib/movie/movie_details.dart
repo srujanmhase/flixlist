@@ -1,6 +1,8 @@
 import 'package:dio/dio.dart';
+import 'package:flixlist/add_to_list/view/add_to_list_view.dart';
 import 'package:flixlist/movie/cubit/movie_cubit.dart';
 import 'package:flixlist/movie/movie_repository.dart';
+import 'package:flixlist/routes/custom_route.dart';
 import 'package:flixlist/utils/utils.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -153,7 +155,14 @@ class _MoviePageViewState extends State<MoviePageView> {
                                   ],
                                 ),
                                 IconButton(
-                                  onPressed: () => print('tapped'),
+                                  onPressed: () => Navigator.of(context).push(
+                                    FlixRoute(
+                                      widget: AddtoList(
+                                        movieID: state.movie?.imdbID ?? '',
+                                      ),
+                                      offset: 0.4,
+                                    ),
+                                  ),
                                   icon: Icon(Icons.add_circle),
                                   color: Colors.white,
                                   tooltip: 'Add to album',
