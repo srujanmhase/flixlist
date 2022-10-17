@@ -166,37 +166,57 @@ class _HomePageViewState extends State<HomePageView> {
                               Padding(
                                 padding:
                                     const EdgeInsets.symmetric(vertical: 30),
-                                child: Container(
-                                  height: 150,
-                                  width: double.infinity,
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(22),
-                                    image: DecorationImage(
-                                      fit: BoxFit.cover,
-                                      image: NetworkImage(
-                                        'https://m.media-amazon.com/images/M/MV5BMTY0MjEyODQzMF5BMl5BanBnXkFtZTcwMTczMjQ4Mg@@._V1_SX300.jpg',
+                                child: InkWell(
+                                  onTap: () {
+                                    Navigator.of(context).push(
+                                      FlixRoute(
+                                        widget: MovieListPage(
+                                          movieList: state.featuredList ??
+                                              MovieList(
+                                                uuid: 'uuid',
+                                                title: 'title',
+                                                private: false,
+                                              ),
+                                        ),
+                                        offset: 0.2,
+                                      ),
+                                    );
+                                  },
+                                  child: Container(
+                                    height: 150,
+                                    width: double.infinity,
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(22),
+                                      image: DecorationImage(
+                                        fit: BoxFit.cover,
+                                        image: NetworkImage(
+                                          state.featuredList?.movies?[0]
+                                                  .Poster ??
+                                              '',
+                                        ),
                                       ),
                                     ),
-                                  ),
-                                  child: Padding(
-                                    padding: const EdgeInsets.only(
-                                        bottom: 16, left: 16),
-                                    child: Align(
-                                      alignment: Alignment.bottomLeft,
-                                      child: Container(
-                                        decoration: BoxDecoration(
-                                          color: Colors.black.withOpacity(0.5),
-                                          borderRadius:
-                                              BorderRadius.circular(12),
-                                        ),
-                                        child: Padding(
-                                          padding: const EdgeInsets.symmetric(
-                                              horizontal: 16, vertical: 8),
-                                          child: Text(
-                                            'Featured Movies',
-                                            style: GoogleFonts.leagueGothic(
-                                              color: Colors.white,
-                                              fontSize: 36,
+                                    child: Padding(
+                                      padding: const EdgeInsets.only(
+                                          bottom: 16, left: 16),
+                                      child: Align(
+                                        alignment: Alignment.bottomLeft,
+                                        child: Container(
+                                          decoration: BoxDecoration(
+                                            color:
+                                                Colors.black.withOpacity(0.5),
+                                            borderRadius:
+                                                BorderRadius.circular(12),
+                                          ),
+                                          child: Padding(
+                                            padding: const EdgeInsets.symmetric(
+                                                horizontal: 16, vertical: 8),
+                                            child: Text(
+                                              'Featured Movies',
+                                              style: GoogleFonts.leagueGothic(
+                                                color: Colors.white,
+                                                fontSize: 36,
+                                              ),
                                             ),
                                           ),
                                         ),
