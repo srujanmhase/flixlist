@@ -20,11 +20,12 @@ Movie _$MovieFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Movie {
-  String get imdbID => throw _privateConstructorUsedError;
   String get Title => throw _privateConstructorUsedError;
   String get Year => throw _privateConstructorUsedError;
   String get Plot => throw _privateConstructorUsedError;
   String get Poster => throw _privateConstructorUsedError;
+  String get Type => throw _privateConstructorUsedError;
+  String get imdbID => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -36,7 +37,12 @@ abstract class $MovieCopyWith<$Res> {
   factory $MovieCopyWith(Movie value, $Res Function(Movie) then) =
       _$MovieCopyWithImpl<$Res>;
   $Res call(
-      {String imdbID, String Title, String Year, String Plot, String Poster});
+      {String Title,
+      String Year,
+      String Plot,
+      String Poster,
+      String Type,
+      String imdbID});
 }
 
 /// @nodoc
@@ -49,17 +55,14 @@ class _$MovieCopyWithImpl<$Res> implements $MovieCopyWith<$Res> {
 
   @override
   $Res call({
-    Object? imdbID = freezed,
     Object? Title = freezed,
     Object? Year = freezed,
     Object? Plot = freezed,
     Object? Poster = freezed,
+    Object? Type = freezed,
+    Object? imdbID = freezed,
   }) {
     return _then(_value.copyWith(
-      imdbID: imdbID == freezed
-          ? _value.imdbID
-          : imdbID // ignore: cast_nullable_to_non_nullable
-              as String,
       Title: Title == freezed
           ? _value.Title
           : Title // ignore: cast_nullable_to_non_nullable
@@ -76,6 +79,14 @@ class _$MovieCopyWithImpl<$Res> implements $MovieCopyWith<$Res> {
           ? _value.Poster
           : Poster // ignore: cast_nullable_to_non_nullable
               as String,
+      Type: Type == freezed
+          ? _value.Type
+          : Type // ignore: cast_nullable_to_non_nullable
+              as String,
+      imdbID: imdbID == freezed
+          ? _value.imdbID
+          : imdbID // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -86,7 +97,12 @@ abstract class _$$_MovieCopyWith<$Res> implements $MovieCopyWith<$Res> {
       __$$_MovieCopyWithImpl<$Res>;
   @override
   $Res call(
-      {String imdbID, String Title, String Year, String Plot, String Poster});
+      {String Title,
+      String Year,
+      String Plot,
+      String Poster,
+      String Type,
+      String imdbID});
 }
 
 /// @nodoc
@@ -100,17 +116,14 @@ class __$$_MovieCopyWithImpl<$Res> extends _$MovieCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? imdbID = freezed,
     Object? Title = freezed,
     Object? Year = freezed,
     Object? Plot = freezed,
     Object? Poster = freezed,
+    Object? Type = freezed,
+    Object? imdbID = freezed,
   }) {
     return _then(_$_Movie(
-      imdbID: imdbID == freezed
-          ? _value.imdbID
-          : imdbID // ignore: cast_nullable_to_non_nullable
-              as String,
       Title: Title == freezed
           ? _value.Title
           : Title // ignore: cast_nullable_to_non_nullable
@@ -127,6 +140,14 @@ class __$$_MovieCopyWithImpl<$Res> extends _$MovieCopyWithImpl<$Res>
           ? _value.Poster
           : Poster // ignore: cast_nullable_to_non_nullable
               as String,
+      Type: Type == freezed
+          ? _value.Type
+          : Type // ignore: cast_nullable_to_non_nullable
+              as String,
+      imdbID: imdbID == freezed
+          ? _value.imdbID
+          : imdbID // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -135,17 +156,16 @@ class __$$_MovieCopyWithImpl<$Res> extends _$MovieCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_Movie implements _Movie {
   const _$_Movie(
-      {required this.imdbID,
-      required this.Title,
+      {required this.Title,
       required this.Year,
       required this.Plot,
-      required this.Poster});
+      required this.Poster,
+      required this.Type,
+      required this.imdbID});
 
   factory _$_Movie.fromJson(Map<String, dynamic> json) =>
       _$$_MovieFromJson(json);
 
-  @override
-  final String imdbID;
   @override
   final String Title;
   @override
@@ -154,10 +174,14 @@ class _$_Movie implements _Movie {
   final String Plot;
   @override
   final String Poster;
+  @override
+  final String Type;
+  @override
+  final String imdbID;
 
   @override
   String toString() {
-    return 'Movie(imdbID: $imdbID, Title: $Title, Year: $Year, Plot: $Plot, Poster: $Poster)';
+    return 'Movie(Title: $Title, Year: $Year, Plot: $Plot, Poster: $Poster, Type: $Type, imdbID: $imdbID)';
   }
 
   @override
@@ -165,22 +189,24 @@ class _$_Movie implements _Movie {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_Movie &&
-            const DeepCollectionEquality().equals(other.imdbID, imdbID) &&
             const DeepCollectionEquality().equals(other.Title, Title) &&
             const DeepCollectionEquality().equals(other.Year, Year) &&
             const DeepCollectionEquality().equals(other.Plot, Plot) &&
-            const DeepCollectionEquality().equals(other.Poster, Poster));
+            const DeepCollectionEquality().equals(other.Poster, Poster) &&
+            const DeepCollectionEquality().equals(other.Type, Type) &&
+            const DeepCollectionEquality().equals(other.imdbID, imdbID));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(imdbID),
       const DeepCollectionEquality().hash(Title),
       const DeepCollectionEquality().hash(Year),
       const DeepCollectionEquality().hash(Plot),
-      const DeepCollectionEquality().hash(Poster));
+      const DeepCollectionEquality().hash(Poster),
+      const DeepCollectionEquality().hash(Type),
+      const DeepCollectionEquality().hash(imdbID));
 
   @JsonKey(ignore: true)
   @override
@@ -197,16 +223,15 @@ class _$_Movie implements _Movie {
 
 abstract class _Movie implements Movie {
   const factory _Movie(
-      {required final String imdbID,
-      required final String Title,
+      {required final String Title,
       required final String Year,
       required final String Plot,
-      required final String Poster}) = _$_Movie;
+      required final String Poster,
+      required final String Type,
+      required final String imdbID}) = _$_Movie;
 
   factory _Movie.fromJson(Map<String, dynamic> json) = _$_Movie.fromJson;
 
-  @override
-  String get imdbID;
   @override
   String get Title;
   @override
@@ -215,6 +240,10 @@ abstract class _Movie implements Movie {
   String get Plot;
   @override
   String get Poster;
+  @override
+  String get Type;
+  @override
+  String get imdbID;
   @override
   @JsonKey(ignore: true)
   _$$_MovieCopyWith<_$_Movie> get copyWith =>
