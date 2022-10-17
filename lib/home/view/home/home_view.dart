@@ -1,8 +1,10 @@
 import 'package:dio/dio.dart';
 import 'package:flixlist/auth/auth_repository.dart';
 import 'package:flixlist/home/cubit/home_cubit.dart';
+import 'package:flixlist/models/list/list.dart';
 import 'package:flixlist/movie/movie_details.dart';
 import 'package:flixlist/movie/movie_repository.dart';
+import 'package:flixlist/movie_list/movie_list.dart';
 import 'package:flixlist/routes/custom_route.dart';
 import 'package:flixlist/services/firestore_repository.dart';
 import 'package:flutter/cupertino.dart';
@@ -243,7 +245,7 @@ class _HomePageViewState extends State<HomePageView> {
                       height: 190,
                       width: MediaQuery.of(context).size.width - 32,
                       child: ListView.separated(
-                        itemCount: 4,
+                        itemCount: state.yourLists.length,
                         scrollDirection: Axis.horizontal,
                         separatorBuilder: (context, index) => const SizedBox(
                           width: 10,
@@ -255,16 +257,68 @@ class _HomePageViewState extends State<HomePageView> {
                             onTap: () {
                               Navigator.of(context).push(
                                 FlixRoute(
-                                  widget: MoviePage(
-                                    name: '',
-                                    id: '',
+                                  widget: MovieListPage(
+                                    movieList: state.yourLists[index],
                                   ),
-                                  offset: 0.3,
+                                  offset: 0.2,
                                 ),
                               );
                             },
                             child: Container(
-                              color: Colors.amber,
+                              clipBehavior: Clip.hardEdge,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(22),
+                                  color: Colors.white,
+                                  boxShadow: [
+                                    BoxShadow(
+                                      offset: Offset(3, 5),
+                                      blurRadius: 12,
+                                      color: Colors.black.withOpacity(0.4),
+                                    )
+                                  ]),
+                              child: Stack(
+                                children: [
+                                  Positioned.fill(
+                                    child: Image.network(
+                                      state.yourLists[index].movies?[0]
+                                              .Poster ??
+                                          '',
+                                      fit: BoxFit.cover,
+                                    ),
+                                  ),
+                                  Positioned(
+                                    bottom: 14,
+                                    left: 10,
+                                    child: Container(
+                                      padding: const EdgeInsets.all(4),
+                                      decoration: BoxDecoration(
+                                        color: Colors.black.withOpacity(0.7),
+                                        borderRadius: BorderRadius.circular(10),
+                                      ),
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Text(
+                                            '${state.yourLists[index].title}',
+                                            style: GoogleFonts.leagueGothic(
+                                              fontSize: 18,
+                                              color: Colors.white,
+                                            ),
+                                          ),
+                                          Text(
+                                            '${state.yourLists[index].movies?[0].Title} ${state.yourLists[index].movies?.length != 1 ? '& ${(state.yourLists[index].movies?.length ?? 0) - 1} other movie(s)' : ''}',
+                                            style: TextStyle(
+                                              fontSize: 10,
+                                              color: Colors.white,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  )
+                                ],
+                              ),
                             ),
                           ),
                         ),
