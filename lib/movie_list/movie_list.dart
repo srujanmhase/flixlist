@@ -189,26 +189,12 @@ class _MovieListPageState extends State<MovieListPage> {
                               const SizedBox(
                                 height: 16,
                               ),
-                              Row(
-                                children: [
-                                  Text(
-                                    widget.movieList.movies?[index].Year ?? '',
-                                    style: GoogleFonts.roboto(
-                                      fontSize: 16,
-                                      color: Colors.white,
-                                    ),
-                                  ),
-                                  const SizedBox(
-                                    width: 20,
-                                  ),
-                                  Text(
-                                    'English',
-                                    style: GoogleFonts.roboto(
-                                      fontSize: 16,
-                                      color: Colors.white,
-                                    ),
-                                  ),
-                                ],
+                              Text(
+                                widget.movieList.movies?[index].Year ?? '',
+                                style: GoogleFonts.roboto(
+                                  fontSize: 16,
+                                  color: Colors.white,
+                                ),
                               )
                             ],
                           ),

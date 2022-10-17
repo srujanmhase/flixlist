@@ -133,26 +133,12 @@ class _MoviePageViewState extends State<MoviePageView> {
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                Row(
-                                  children: [
-                                    Text(
-                                      state.movie?.Year ?? '',
-                                      style: GoogleFonts.roboto(
-                                        fontSize: 16,
-                                        color: Colors.white,
-                                      ),
-                                    ),
-                                    const SizedBox(
-                                      width: 10,
-                                    ),
-                                    Text(
-                                      'English',
-                                      style: GoogleFonts.roboto(
-                                        fontSize: 16,
-                                        color: Colors.white,
-                                      ),
-                                    ),
-                                  ],
+                                Text(
+                                  state.movie?.Year ?? '',
+                                  style: GoogleFonts.roboto(
+                                    fontSize: 16,
+                                    color: Colors.white,
+                                  ),
                                 ),
                                 IconButton(
                                   onPressed: () => Navigator.of(context).push(
