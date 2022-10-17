@@ -4,6 +4,7 @@ import 'package:flixlist/models/list/list.dart';
 import 'package:flixlist/models/movie/movie.dart';
 import 'package:flixlist/movie/movie_repository.dart';
 import 'package:flixlist/services/firestore_repository.dart';
+import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'home_state.dart';
@@ -80,7 +81,8 @@ class HomeCubit extends Cubit<HomeState> {
           yourLists: movieLists,
         ),
       );
-    } catch (e) {
+    } catch (e, s) {
+      debugPrint('$e $s');
       return emit(
         state.copyWith(
           isLoading: false,
