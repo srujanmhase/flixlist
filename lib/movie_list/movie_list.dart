@@ -167,11 +167,16 @@ class _MovieListPageState extends State<MovieListPage> {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text(
-                                widget.movieList.movies?[index].Title ?? '',
-                                style: GoogleFonts.leagueGothic(
-                                  fontSize: 48,
-                                  color: Colors.white,
+                              SizedBox(
+                                width: 180,
+                                child: Text(
+                                  widget.movieList.movies?[index].Title ?? '',
+                                  overflow: TextOverflow.ellipsis,
+                                  maxLines: 2,
+                                  style: GoogleFonts.leagueGothic(
+                                    fontSize: 48,
+                                    color: Colors.white,
+                                  ),
                                 ),
                               ),
                               SizedBox(
