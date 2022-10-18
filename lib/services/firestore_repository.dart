@@ -19,7 +19,7 @@ class FirestoreRepository {
   Future<String> createNewPrivateList(String uuid, String name) async {
     final listID = randomAlphaNumeric(10);
     await _instance.collection('users').doc(uuid).update({
-      'public': FieldValue.arrayUnion([listID]),
+      'private': FieldValue.arrayUnion([listID]),
     });
 
     await _instance.collection('private').doc(listID).set({
